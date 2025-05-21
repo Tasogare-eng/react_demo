@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { BASE_URL } from '../config.js';
 
 interface HelloResponse {
   message: string;
@@ -11,7 +12,7 @@ const HelloMessage: React.FC = () => {
   const fetchMessage = async () => {
     try {
       setLoading(true);
-      const res = await fetch('http://127.0.0.1:8000/api/hello');
+      const res = await fetch(`${BASE_URL}/api/hello`);
       if (!res.ok) {
         throw new Error(`HTTP error! status: ${res.status}`);
       }

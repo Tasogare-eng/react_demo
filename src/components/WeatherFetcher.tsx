@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { BASE_URL } from '../config';
 
 interface WeatherApiResponse {
   name: string;
@@ -24,7 +25,7 @@ const WeatherFetcher: React.FC = () => {
 
     try {
       // バックエンドのエンドポイントを /weather&city=都市名 で呼び出し
-      const res = await fetch(`http://127.0.0.1:8000/api/weather?city=${encodeURIComponent(city)}`);
+      const res = await fetch(`${BASE_URL}/api/weather?city=${encodeURIComponent(city)}`);
       if (!res.ok) {
         throw new Error(`HTTP error! status: ${res.status}`);
       }
